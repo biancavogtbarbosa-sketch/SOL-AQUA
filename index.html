@@ -1,0 +1,188 @@
+
+---
+
+## 📄 2. `index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SolÁqua - Site educacional sobre absorção, reflexão e transmissão da radiação solar aplicado ao aquecimento de piscinas." />
+  <meta name="theme-color" content="#0a4d8c" />
+  <title>SolÁqua — Radiação & Piscinas</title>
+
+  <!-- OpenDyslexic (fonte para dislexia) -->
+  <link href="https://fonts.cdnfonts.com/css/opendyslexic" rel="stylesheet" />
+  <!-- Fonte padrão -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Pular para conteúdo (acessibilidade) -->
+  <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- BARRA DE ACESSIBILIDADE -->
+  <div class="a11y-bar" role="toolbar" aria-label="Ferramentas de acessibilidade">
+    <button id="btnContrast" aria-label="Ativar alto contraste">🌓 Contraste</button>
+    <button id="btnDyslexic" aria-label="Ativar fonte para dislexia">🔤 Dislexia</button>
+    <button id="btnFontUp" aria-label="Aumentar fonte">A+</button>
+    <button id="btnFontDown" aria-label="Diminuir fonte">A−</button>
+  </div>
+
+  <!-- CABEÇALHO -->
+  <header role="banner">
+    <div class="logo">
+      <img src="assets/img/logo.svg" alt="" aria-hidden="true" />
+      <h1>SolÁqua <small>— Luz que Aquece</small></h1>
+    </div>
+    <nav aria-label="Menu principal">
+      <ul>
+        <li><a href="#intro">Introdução</a></li>
+        <li><a href="#optica">Óptica</a></li>
+        <li><a href="#simuladores">Simuladores</a></li>
+        <li><a href="#sensores">Sensores</a></li>
+        <li><a href="#piscina">Piscina</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" role="main">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <h2 id="hero-title">Como o Sol aquece a água da piscina?</h2>
+        <p>Descubra os fenômenos de <strong>absorção</strong>, <strong>reflexão</strong> e <strong>transmissão</strong> da radiação solar — e como aplicá-los para tornar sua piscina mais eficiente e sustentável.</p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="sun"></div>
+        <div class="pool"></div>
+      </div>
+    </section>
+
+    <!-- INTRODUÇÃO -->
+    <section id="intro" class="section" aria-labelledby="intro-title">
+      <h2 id="intro-title">🌞 O que é radiação solar?</h2>
+      <p>A radiação solar é energia emitida pelo Sol na forma de ondas eletromagnéticas. Ao atingir a Terra, ela pode ser <strong>absorvida</strong>, <strong>refletida</strong> ou <strong>transmitida</strong> pelos materiais — e é exatamente isso que define se a sua piscina vai esquentar mais ou menos.</p>
+      <div class="cards">
+        <article class="card" tabindex="0">
+          <h3>☀️ Absorção</h3>
+          <p>A energia da luz é convertida em calor pelo material.</p>
+        </article>
+        <article class="card" tabindex="0">
+          <h3>🪞 Reflexão</h3>
+          <p>A luz "quica" na superfície e volta ao ambiente.</p>
+        </article>
+        <article class="card" tabindex="0">
+          <h3>🪟 Transmissão</h3>
+          <p>A luz atravessa o material (ex: vidro, água).</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ÓPTICA -->
+    <section id="optica" class="section alt" aria-labelledby="optica-title">
+      <h2 id="optica-title">🔬 Óptica: a ciência por trás do calor</h2>
+      <p>Superfícies <strong>escuras</strong> absorvem mais luz visível e infravermelha, transformando-a em calor. Superfícies <strong>claras</strong> refletem boa parte dessa energia. É por isso que, no verão, pisar descalço em um asfalto escuro queima — e em uma areia clara, não.</p>
+      <figure>
+        <img src="assets/img/sol-agua.svg" alt="Ilustração do Sol irradiando luz sobre uma piscina, com raios sendo absorvidos, refletidos e transmitidos." />
+        <figcaption>Interação da radiação solar com a superfície da piscina.</figcaption>
+      </figure>
+    </section>
+
+    <!-- SIMULADORES -->
+    <section id="simuladores" class="section" aria-labelledby="sim-title">
+      <h2 id="sim-title">🎮 Simuladores Interativos</h2>
+
+      <!-- Simulador 1 -->
+      <article class="sim" aria-labelledby="sim1-title">
+        <h3 id="sim1-title">1. Absorção vs. Reflexão</h3>
+        <p>Arraste o controle para mudar a cor da superfície e veja a temperatura subir.</p>
+        <canvas id="sim1" width="600" height="300" aria-label="Simulação de absorção e reflexão em diferentes cores"></canvas>
+        <div class="controls">
+          <label for="colorRange">Cor da superfície (clara → escura):</label>
+          <input type="range" id="colorRange" min="0" max="100" value="50" />
+          <output id="tempOut" aria-live="polite">Temperatura: 25°C</output>
+        </div>
+      </article>
+
+      <!-- Simulador 2 -->
+      <article class="sim" aria-labelledby="sim2-title">
+        <h3 id="sim2-title">2. Cobertura Transparente (Efeito Estufa)</h3>
+        <p>Uma cobertura transparente deixa a luz entrar, mas impede que o calor saia.</p>
+        <canvas id="sim2" width="600" height="300" aria-label="Simulação de piscina com e sem cobertura transparente"></canvas>
+        <div class="controls">
+          <button id="toggleCover" aria-pressed="false">Ativar cobertura</button>
+          <output id="tempOut2" aria-live="polite">Sem cobertura: 25°C</output>
+        </div>
+      </article>
+    </section>
+
+    <!-- SENSORES / ROBÓTICA -->
+    <section id="sensores" class="section alt" aria-labelledby="sens-title">
+      <h2 id="sens-title">🤖 Robótica: sensores que enxergam o Sol</h2>
+      <p>Para automatizar o aquecimento da piscina, usamos sensores:</p>
+      <ul>
+        <li><strong>LDR (fotorresistor):</strong> mede a luminosidade ambiente — indica se há Sol.</li>
+        <li><strong>Sensor de temperatura (DS18B20):</strong> lê a temperatura da água em tempo real.</li>
+      </ul>
+      <div class="sensor-demo">
+        <p>Leitura virtual do sensor:</p>
+        <div class="sensor-values">
+          <div class="sensor-box">☀️ Luminosidade: <span id="ldrVal">0</span> lux</div>
+          <div class="sensor-box">🌡️ Temperatura: <span id="tempVal">25.0</span> °C</div>
+        </div>
+        <button id="readSensor">Ler sensores</button>
+      </div>
+    </section>
+
+    <!-- PISCINA -->
+    <section id="piscina" class="section" aria-labelledby="pisc-title">
+      <h2 id="pisc-title">🏊 Projeto da Piscina: aplicando a ciência</h2>
+      <details>
+        <summary>Por que superfícies escuras aquecem mais a piscina?</summary>
+        <p>Materiais escuros absorvem quase toda a luz visível e infravermelha, convertendo-a em calor. Revestimentos escuros no fundo da piscina aumentam a temperatura da água.</p>
+      </details>
+      <details>
+        <summary>Qual a diferença entre absorver e refletir radiação?</summary>
+        <p><strong>Absorver</strong> = reter a energia (gera calor). <strong>Refletir</strong> = devolver a energia ao ambiente (não aquece).</p>
+      </details>
+      <details>
+        <summary>Uma cobertura transparente ajuda a aquecer?</summary>
+        <p>Sim! Ela permite a entrada da luz visível, mas bloqueia a saída do infravermelho reemitido pela água — é o chamado <strong>efeito estufa</strong>, o mesmo princípio das estufas agrícolas.</p>
+      </details>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="section alt" aria-labelledby="sobre-title">
+      <h2 id="sobre-title">📚 Sobre o projeto</h2>
+      <p>O <strong>SolÁqua</strong> é um projeto integrador do CEP que une <strong>Programação</strong>, <strong>Tecnociência</strong> e <strong>Robótica</strong> para promover educação científica acessível e sustentável. Acreditamos que a inclusão digital começa com um site que <em>todos</em> possam usar.</p>
+    </section>
+
+  </main>
+
+  <footer role="contentinfo">
+    <p>© 2026 SolÁqua — Projeto Integrador CEP. Feito com ☀️ e 💧.</p>
+    <p><a href="#main">Voltar ao topo ↑</a></p>
+  </footer>
+
+  <!-- VLibras (acessibilidade em Libras) -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
